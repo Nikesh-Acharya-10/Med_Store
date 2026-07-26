@@ -1,0 +1,59 @@
+import os
+from datetime import datetime
+
+INVOICES_DIR = "invoices"
+
+
+def _ensure_invoices_dir():
+    if not os.path.exists(INVOICES_DIR):
+        os.makedirs(INVOICES_DIR)
+
+#` Generates a unique filename for the restock invoice using the current timestamp.`
+def _unique_filename(prefix):
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    return os.path.join(INVOICES_DIR, f"{prefix}_{timestamp}.txt")
+
+#create a seprate for the invoice 
+def _separator(char="=", width=55):
+    return char * width
+
+# Generates a restock invoice text file with the given supplier name, items, and grand total.
+def generate_restock_invoice(supplier_name, items, grand_total):
+    _ensure_invoices_dir()
+    filename = _unique_filename("RESTOCK")
+    now = datetime.now()
+
+    lines = []
+    lines.append(_separator())
+    lines.append("        MEDSTORE PVT. LTD.")
+    lines.append("     Wholesale Medicine Distributor")
+    lines.append(_separator())
+    lines.append(f"  Invoice Type : RESTOCK NOTE")
+    lines.append(f"  Date         : {now.strftime('%Y-%m-%d')}")
+    lines.append(f"  Time         : {now.strftime('%H:%M:%S')}")
+    lines.append(f"  Supplier     : {supplier_name}")
+    lines.append(_separator("-"))
+    lines.append(f"  {'Medicine':<22} {'Brand':<16} {'Qty':<12} {'Rate':>6} {'Total(Rs)':>10}")
+    lines.append(_separator("-"))
+
+    for item in items:
+        qty_str = f"{item['quantity']} {item['unit_type']}(s)"
+        lines.append(
+            f"  {item['name']:<22} {item['brand']:<16} "
+            f"{qty_str:<12} {item['rate']:>6.2f} {item['total']:>10.2f}"
+        )
+
+    lines.append(_separator("-"))
+    lines.append(f"  {'GRAND TOTAL':>54}   Rs {grand_total:.2f}")
+    lines.append(_separator())
+    lines.append("  Restock recorded successfully.")
+    lines.append(_separator())
+
+    try:
+        with open(filename, "w") as f:
+            f.write("\n".join(lines) + "\n")
+    except IOError as e:
+        print(f"[ERROR] Could not save restock invoice: {e}")
+        return None
+
+    return filename
