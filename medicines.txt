@@ -1,0 +1,17 @@
+Paracetamol 500mg, Lomus, 1252, 5, 45, 10
+Cetirizine 10mg, Quest, 503, 4, 35, 12
+Amoxicillin 500mg, Nepal Remedies, 1724, 12, 110, 15
+Pantoprazole 40mg, Deurali-Janta, 588, 7, 60, 8
+ORS Sachet, Time Pharma, 36, 20, 180, 12
+Ibuprofen 400mg, Lomus, 750, 6, 55, 10
+Metformin 500mg, Nepal Remedies, 400, 8, 72, 10
+Azithromycin 500mg, Quest, 250, 25, 120, 6
+Omeprazole 20mg, Deurali-Janta, 550, 9, 80, 10
+Vitamin C 500mg, Time Pharma, 1000, 3, 25, 10
+Diclofenac 50mg, Lomus, 650, 6, 50, 10
+Aspirin 75mg, Quest, 900, 2, 18, 14
+Ciprofloxacin 500mg, Nepal Remedies, 300, 15, 130, 10
+Dolo 650mg, Time Pharma, 1100, 4, 38, 15
+Ranitidine 150mg, Deurali-Janta, 500, 5, 45, 10
+Zinc Tablet, Time Pharma, 700, 3, 28, 10
+Calcium + Vitamin D, Nepal Remedies, 450, 10, 95, 10
